@@ -68,6 +68,12 @@ def rgb_route():
     return render_template("rgb.html", projects=data.setup())
 
 
+# connects /flask path of server to render gif.html
+@app.route('/gif/')
+def gif_route():
+    return render_template("gif.html", projects=data.setup())
+
+
 @app.route("/project/runtime")
 def runtime_route():
     return render_template("task.html", data=data.runtime())
