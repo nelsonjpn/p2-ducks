@@ -2,19 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Character Codes</title>
+    <title>Unicode numbers</title>
 </head>
 <body>
-<h1>Character Codes</h1>
+<h1>Character codes</h1>
 <form action="/char/" method="POST">
     <table border="1">
         <tr>
-            <th>Column1</th><th>Column2</th><th></th>
+            <th>Code type</th>
+            <th>Value</th><th>Result</th>
+            <th>Code Type</th>
+            <th>Value</th><th>Result</th>
         </tr>
         <tr>
-            <td>Date 1</td><td><Input type="Text"></td><td><input type="submit"></td>
+            <td>ASCII</td>
+            <td><Input type="Text" id="ASCIICode" size="4" align="center" class="ASCIIDiv">{{ ascii }}&#33;</p ></td>
+
+            <td>Unicode</td><td><input type="Text" id="UnicodeCode" size="4" value="128512"></td>
+            <td><p align="center" class="unicodeDiv">{{ unicode }}&#128512;</p ></td>
+
+            <td><input type="submit"></td>
         </tr>
     </table>
 </form>
+</div>
 </body>
 </html>
