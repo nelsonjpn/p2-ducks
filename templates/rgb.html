@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>RGB</title>
-</head>
+    <title>
+        RGB
+    </title>
 <body>
-<h1>RGB</h1>
+<form action="/rgb/" method="POST">
+    <table border="1">
+        <tr>
+            <th style="background-color:red">Red</th>
+            <th style="background-color:green">Green</th>
+            <th style="background-color:blue">Blue</th>
+            <th>Result</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><Input type="Text" id="codeRed" size="4" maxlength="3" value="0"></td>
+            <td><Input type="Text" id="codeGreen" size="4" maxlength="3" value="191"></td>
+            <td><Input type="Text" id="codeBlue" size="4" maxlength="3" value="255"></td>
+            <td><div class="colorDiv">Color</div></td>
+            <td><input type="submit"></td>
+        </tr>
+    </table>
+</form>
 </body>
+</head>
 </html>
