@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Lightbulb</h2>
+<p>This is the template for the project which shows the lightbulb demonstration in the Harvard Video:</p>
+
+<div class="row">
+    <div class="column">
+        <script>
+            function light(sw) {
+                var pic;
+
+                pic = "static/" + sw
+            }
+
+            document.getElementById('myImage').src = pic;
+            }
+        </script>
+
+
+        <form action="/bin/" method="POST">
+            <table border="1">
+                <tr>
+                    <td><img id="blub1" src="static/pic_bulboff1.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon1.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff1.gif')">Off</button>
+                    <td><img id="blub2" src="static/pic_bulboff2.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon2.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff2.gif')">Off</button>
+                    <td><img id="blub3" src="static/pic_bulboff3.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon3.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff3.gif')">Off</button>
+                    <td><img id="blub4" src="static/pic_bulboff4.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon4.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff4.gif')">Off</button>
+                    <td><img id="blub3" src="static/pic_bulboff5.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon5.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff5.gif')">Off</button>
+                    <td><img id="blub3" src="static/pic_bulboff6.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon6.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff6.gif')">Off</button>
+                    <td><img id="blub3" src="static/pic_bulboff7.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon7.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff7.gif')">Off</button>
+                    <td><img id="blub3" src="static/pic_bulboff8.gif" width="100" height="180">
+                        <button type="button" onclick="light('pic_bulbon8.gif')">On</button>
+                        <button type="button" onclick="light('pic_bulboff8.gif')">Off</button>
+
+</body>
+</html>
