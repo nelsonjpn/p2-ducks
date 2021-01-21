@@ -53,7 +53,7 @@ def ducks_route():
 # connects /flask path of server to render binary.html
 @app.route('/bin/')
 def bin_route():
-    return render_template("binary.html", projects=data.setup())
+    return render_template("lightbulb.html", projects=data.setup())
 
 
 # connects /flask path of server to render Char_codes.html
