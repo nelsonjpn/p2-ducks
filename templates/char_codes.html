@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Unicode numbers</title>
+    <title>Unicode ASCII </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h1 {
+            color: pink;
+            }
+    </style>
 </head>
 <body>
 <h1>Character codes</h1>
@@ -16,11 +22,9 @@
         </tr>
         <tr>
             <td>ASCII</td>
-            <td><Input type="Text" id="ASCIICode" size="4" align="center" class="ASCIIDiv">{{ ascii }}&#33;</p ></td>
-
+            <td><Input type="Text" id="ASCIICode" size="4" value="33" align="center" class="ASCIIDiv"></td><td>{{ ascii }}&#33;</td>
             <td>Unicode</td><td><input type="Text" id="UnicodeCode" size="4" value="128512"></td>
             <td><p align="center" class="unicodeDiv">{{ unicode }}&#128512;</p ></td>
-
             <td><input type="submit"></td>
         </tr>
     </table>
