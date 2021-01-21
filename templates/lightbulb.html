@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Lightbulb</h2>
+<p>This is the template for the project which shows the lightbulb demonstration in the Harvard Video:</p>
+
+<div class="row">
+    <div class="column">
+        <script>
+            function light(sw) {
+                var pic;
+                //if (sw == 0) {
+                pic = "static" + sw
+            } //else {
+              //pic = "https://previews.123rf.com/images/subhanbaghirov/subhanbaghirov1909/subhanbaghirov190900033/130565737-idea-light-bulb-icon-simple-flat-style-illustration-.jpg"
+            //}
+            document.getElementById('myImage').src = pic;
+            }
+        </script>
+
+        <img id="bulb1" src="static/pic_bulboff1.gif" width="100" height="180">
+
+        <p>
+            <button type="button" onclick="light('pic_bulbon1.gif')">On</button>
+            <button type="button" onclick="light('pic_bulboff1.gif')">Off</button>
+        </p>
+    </div>
+    <div class="column">
+
+        <img id="blub2" src="https://media.istockphoto.com/vectors/light-bulb-icon-vector-id1088281510" width="100" height="180">
+
+        <p>
+            <button type="button" onclick="light(1)">On</button>
+            <button type="button" onclick="light(0)">Off</button>
+        </p>
+    </div>
+    <div class="column">
+
+
+        <img id="bulb3" src="https://media.istockphoto.com/vectors/light-bulb-icon-vector-id1088281510" width="100" height="180">
+
+        <p>
+            <button type="button" onclick="light(1)">On</button>
+            <button type="button" onclick="light(0)">Off</button>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
