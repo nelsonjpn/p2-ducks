@@ -8,6 +8,10 @@
         h1 {
             color: pink;
             }
+
+         h3 {
+            color: light green;
+            }
     </style>
 </head>
 <body>
@@ -16,11 +20,6 @@
 <h3>Unicode is an information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems. </h3>
 <h3>Have a try!</h3>
 <link rel="stylesheet" href="style.css">
-<style>
-        h3 {
-            color: light green;
-            }
-    </style>
 <form action="/char/" method="POST">
     <table border="1">
         <tr>
@@ -31,7 +30,7 @@
         </tr>
         <tr>
             <td>ASCII</td>
-            <td><Input type="Text" id="ASCIICode" size="4" align="center" class="ASCIIDiv">{{ ascii }}&#33;</p ></td>
+            <td><Input type="Text" id="ASCIICode" size="4" align="center" class="ASCIIDiv">{{ ascii }}</td><td>&#33;</td>
             <td>Unicode</td><td><input type="Text" id="UnicodeCode" size="4" value="128512"></td>
             <td><p align="center" class="unicodeDiv">{{ unicode }}&#128512;</p ></td>
             <td><input type="submit"></td>
