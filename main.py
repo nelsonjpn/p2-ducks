@@ -2,6 +2,8 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from flask import request
+from flask import Markup
 # from flask_wtf import FlaskForm
 # from wtforms import stringfield
 
@@ -15,6 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Program Files (x86)\\SQLI
 Bootstrap(app)
 db = SQLAlchemy(app)
 
+
 # class LoginForm(FlaskForm):
 
 
@@ -26,6 +29,7 @@ class Users(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+
 # create a Flask instance
 # app = Flask(__name__)
 
@@ -34,6 +38,7 @@ class Users(db.Model):
 @app.route('/')
 def home_route():
     return render_template("p2-ducks.html", projects=data.setup())
+
 
 # connects /hello path of server to render hello.html
 @app.route('/PaulN/')
@@ -56,10 +61,39 @@ def bin_route():
     return render_template("lightbulb.html", projects=data.setup())
 
 
+# connects /flask path of server to render example.html
+@app.route('/example/', methods=["GET", "POST"])
+def example_route():
+    # first get the form data
+    if request.form.get("txt") is not None and request.form.get("txt") != "":
+        print("text: " + request.form.get("txt"))
+        strTxt = request.form.get("txt")
+        example = Markup("<b><i>" + strTxt + "</i></b>")
+    else:
+        strTxt = ""
+        example = strTxt
+    # next format it
+    # then return the parameter to the page
+    return render_template("example.html", strTxt=strTxt, example=example, projects=data.setup())
+
+
 # connects /flask path of server to render Char_codes.html
-@app.route('/char/')
+@app.route('/char/', methods=["GET", "POST"])
 def char_route():
-    return render_template("char_codes.html", projects=data.setup())
+    # get values sent by form
+    # first the ascii code
+    if request.form.get("ASCIICode") is not None:
+        strAscii = Markup("&#" + request.form.get("ASCIICode") + ";")
+    else:
+        strAscii = ""
+    # second the unicode code
+    if request.form.get("UnicodeCode") is not None:
+        strUnicode = Markup("&#" + request.form.get("UnicodeCode") + ";")
+    else:
+        strUnicode = ""
+
+    # return the page, sending ASCII and UniCode parameters
+    return render_template("char_codes.html", asciicode=strAscii, unicode=strUnicode, projects=data.setup())
 
 
 # connects /flask path of server to render rgb.html
@@ -77,9 +111,6 @@ def gif_route():
 @app.route("/project/runtime")
 def runtime_route():
     return render_template("task.html", data=data.runtime())
-
-
-
 
 
 if __name__ == "__main__":
