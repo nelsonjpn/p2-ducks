@@ -4,6 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import Markup
+from model import updatestats
 # from flask_wtf import FlaskForm
 # from wtforms import stringfield
 
@@ -16,7 +17,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db'
 Bootstrap(app)
 db = SQLAlchemy(app)
-
 
 # class LoginForm(FlaskForm):
 
@@ -68,6 +68,7 @@ def example_route():
     if request.form.get("txt") is not None and request.form.get("txt") != "":
         print("text: " + request.form.get("txt"))
         strTxt = request.form.get("txt")
+        # now format it - the Markup import formats the HTML correctly
         example = Markup("<b><i>" + strTxt + "</i></b>")
     else:
         strTxt = ""
@@ -78,9 +79,10 @@ def example_route():
 
 
 # connects /flask path of server to render Char_codes.html
-@app.route('/char/', methods=["GET", "POST"])
+@app.route('/char/', methods=["GET","POST"])
 def char_route():
-    # get values sent by form
+    # get value sent by form, and format them
+    print("Ascii" + str(request.form.get("ASCIICode")))
     # first the ascii code
     if request.form.get("ASCIICode") is not None:
         strAscii = Markup("&#" + request.form.get("ASCIICode") + ";")
@@ -91,20 +93,21 @@ def char_route():
         strUnicode = Markup("&#" + request.form.get("UnicodeCode") + ";")
     else:
         strUnicode = ""
-
-    # return the page, sending ASCII and UniCode parameters
+    # return the page, sending ASCII and Unicode parameters
     return render_template("char_codes.html", asciicode=strAscii, unicode=strUnicode, projects=data.setup())
 
 
 # connects /flask path of server to render rgb.html
 @app.route('/rgb/')
 def rgb_route():
+    # update the count for rgb\
     return render_template("rgb.html", projects=data.setup())
 
 
 # connects /flask path of server to render gif.html
 @app.route('/gif/')
 def gif_route():
+    # update the count for gif
     return render_template("gif.html", projects=data.setup())
 
 
