@@ -78,6 +78,11 @@ def example_route():
     return render_template("example.html", strTxt=strTxt, example=example, projects=data.setup())
 
 
+# connects to /easteregg/
+@app.route('/easteregg/')
+def easteregg_route():
+    return render_template('easteregg.html')
+
 # connects /flask path of server to render Char_codes.html
 @app.route('/char/', methods=["GET","POST"])
 def char_route():
