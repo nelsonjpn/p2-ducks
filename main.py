@@ -4,7 +4,9 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import Markup
-from model import updatestats
+# from model import site_stats
+# from model import db
+import datetime
 # from flask_wtf import FlaskForm
 # from wtforms import stringfield
 
@@ -14,39 +16,20 @@ import data  # projects definitions are placed in different file
 # from wtforms.validators import InputRequired, email, length
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db'
-Bootstrap(app)
+
+""" database locations """
+dbURI = 'sqlite:///model/createDB'
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = dbURI
+
 db = SQLAlchemy(app)
-
-# class LoginForm(FlaskForm):
-
-
-class Users(db.Model):
-    UserID = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255), unique=True, nullable=False)
-    password = db.Column(db.String(255), unique=True, nullable=False)
-
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-
-# create a Flask instance
-# app = Flask(__name__)
 
 
 # connects default URL of server to render home.html
 @app.route('/')
 def home_route():
     return render_template("p2-ducks.html", projects=data.setup())
-
-
-# connects /hello path of server to render hello.html
-@app.route('/PaulN/')
-def hello_route():
-    print('In PaulN')
-    user = Users.query.filter_by(UserID=1).first()
-    print(user.username)
-    return render_template("PaulN.html", projects=data.setup())
 
 
 # connects /hello path of server to render p2-ducks.html
@@ -73,7 +56,8 @@ def example_route():
     else:
         strTxt = ""
         example = strTxt
-    # next format it
+    # log visit
+    update_stats('example')
     # then return the parameter to the page
     return render_template("example.html", strTxt=strTxt, example=example, projects=data.setup())
 
@@ -82,6 +66,25 @@ def example_route():
 @app.route('/easteregg/')
 def easteregg_route():
     return render_template('easteregg.html')
+
+
+class SiteStats(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sitename = db.Column(db.VARCHAR)
+    datevisit = db.Column(db.VARCHAR)
+
+
+def update_stats(site):
+    try:
+        dt = datetime.datetime.now()
+        v1 = SiteStats(sitename=site, datevisit=str(dt))
+        print("Variable: " + v1.sitename + " " + v1.datevisit)
+        db.session.add(v1)
+        db.session.commit()
+
+    finally:
+        print("Done")
+
 
 # connects /flask path of server to render Char_codes.html
 @app.route('/char/', methods=["GET","POST"])
@@ -98,6 +101,8 @@ def char_route():
         strUnicode = Markup("&#" + request.form.get("UnicodeCode") + ";")
     else:
         strUnicode = ""
+
+    update_stats('char')
     # return the page, sending ASCII and Unicode parameters
     return render_template("char_codes.html", asciicode=strAscii, unicode=strUnicode, projects=data.setup())
 
