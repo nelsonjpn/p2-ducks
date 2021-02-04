@@ -22,38 +22,41 @@
 </head>
 <body>
 
-<h2>Lightbulb <a href="/easteregg/"><img src="../static/easter_egg.png" width="15" height="20" target=new"></a></h2>
+<h2>Lightbulb</h2>
 <p>This is the template for the project which shows the lightbulb demonstration in the Harvard Video:</p>
 
 <div class="row">
     <div class="column">
-        <form action="/bin/" method="POST">
+        <script>
+            function light(sw) {
+                var pic;
+
+                pic = "static/" + sw
+            }
+            document.getElementById('myImage').src = pic;
+            }
+        </script>
+
+
+        <form action="/bin/" method="post">
             <table border="1">
                 <tr>
                     <td><img id="bulb1" src="../static/pic_bulboff1.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('1')">On</button>
-                        <button type="button" onclick="changeImage('1')">Off</button></td>
+                        <button type="button" onclick="changeImage('1')">On/Off</button>
                     <td><img id="bulb2" src="../static/pic_bulboff2.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('2')">On</button>
-                        <button type="button" onclick="changeImage('2')">Off</button></td>
+                        <button type="button" onclick="changeImage('2')">On/Off</button>
                     <td><img id="bulb3" src="../static/pic_bulboff3.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('3')">On</button>
-                        <button type="button" onclick="changeImage('3')">Off</button></td>ame
+                        <button type="button" onclick="changeImage('3')">On/Off</button>
                     <td><img id="bulb4" src="../static/pic_bulboff4.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('4')">On</button>
-                        <button type="button" onclick="changeImage('4')">Off</button></td>
+                        <button type="button" onclick="changeImage('4')">On/Off</button>
                     <td><img id="bulb5" src="../static/pic_bulboff5.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('5')">On</button>
-                        <button type="button" onclick="changeImage('5')">Off</button></td>
+                        <button type="button" onclick="changeImage('5')">On/Off</button>
                     <td><img id="bulb6" src="../static/pic_bulboff6.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('6')">On</button>
-                        <button type="button" onclick="changeImage('6')">Off</button></td>
+                        <button type="button" onclick="changeImage('6')">On/Off</button>
                     <td><img id="bulb7" src="../static/pic_bulboff7.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('7')">On</button>
-                        <button type="button" onclick="changeImage('7')">Off</button>
+                        <button type="button" onclick="changeImage('7')">On/Off</button>
                     <td><img id="bulb8" src="../static/pic_bulboff8.gif" width="100" height="180">
-                        <button type="button" onclick="changeImage('8')">On</button>
-                        <button type="button" onclick="changeImage('8')">Off</button></td>
+                        <button type="button" onclick="changeImage('8')">On/Off</button>
                 <tr>
                     <td><input type='text' id='digit1' Value="0" size="1"></input></td>
                     <td><input type='text' id='digit2' Value="0" size="1"></input></td>
@@ -66,38 +69,38 @@
                 </tr>
                 <tr><td><input type="text" disabled="true" id="binary" value="" size="10"></td>
                     <td><input type="button" value="Get Binary" onclick="getbin()"></td>
-                    <td><input type="submit" value="Get decimal"></td></tr>
+                    <td><input type="submit" value="Get decimal"></td>
+                    <td><input type="text" disabled="true" id="decimal" value="" size="10"></td></tr>
+
             </table>
-        </form>
-    </div>
-    <script>
-        function getbin(){
-            //alert("get binary");
-            var myBin;
-            myBin = document.getElementById('digit1').value +
-            document.getElementById('digit2').value +
-            document.getElementById('digit3').value +
-            document.getElementById('digit4').value +
-            document.getElementById('digit5').value +
-            document.getElementById('digit6').value +
-            document.getElementById('digit7').value +
-            document.getElementById('digit8').value;
-            //alert("myBin: " & myBin);
-            document.getElementById('binary').value = myBin;
-        }
-        function changeImage(i) {
-          //alert("Image: " + i);
-          var image = document.getElementById('bulb' + i);
-          var dig = document.getElementById('digit' + i);
-          //alert("!_" + image.src)
-          if (image.src.match("../static/pic_bulbon" + i +".gif")) {
-            image.src = "../static/pic_bulboff" + i + ".gif";
-            dig.value = 0;
-          } else {
-            image.src = "../static/pic_bulbon" + i + ".gif";
-            dig.value = 1;
-          }
-        }
-    </script>
+            <script>
+                function getbin(){
+                    //alert("get binary");
+                    var myBin;
+                    myBin = document.getElementById('digit1').value +
+                        document.getElementById('digit2').value +
+                        document.getElementById('digit3').value +
+                        document.getElementById('digit4').value +
+                        document.getElementById('digit5').value +
+                        document.getElementById('digit6').value +
+                        document.getElementById('digit7').value +
+                        document.getElementById('digit8').value;
+                    //alert("myBin: " & myBin);
+                    document.getElementById('binary').value = myBin;
+                }
+                function changeImage(i) {
+                    //alert("Image: " + i);
+                    var image = document.getElementById('bulb' + i);
+                    var dig = document.getElementById('digit' + i);
+                    //alert("!_" + image.src)
+                    if (image.src.match("../static/pic_bulbon" + i +".gif")) {
+                        image.src = "../static/pic_bulboff" + i + ".gif";
+                        dig.value = 0;
+                    } else {
+                        image.src = "../static/pic_bulbon" + i + ".gif";
+                        dig.value = 1;
+                    }
+                }
+            </script>
 </body>
 </html>
