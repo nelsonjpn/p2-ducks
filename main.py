@@ -38,10 +38,17 @@ def ducks_route():
     return render_template("p2-ducks.html", projects=data.setup())
 
 
-# connects /flask path of server to render binary.html
-@app.route('/bin/')
+# connects /flask path of server to render lightbulb.html
+@app.route('/bin/', methods=["GET", "POST"])
 def bin_route():
-    return render_template("lightbulb.html", projects=data.setup())
+    # first get the form data
+    dec = 0
+    if request.form.get("bin") is not None and request.form.get("bin") != "":
+        print(request.form.get("bin"))
+        b = request.form.get("bin")
+        dec = int(b, 2)
+    update_stats('bin')
+    return render_template("lightbulb.html", decimal=dec, projects=data.setup())
 
 
 # connects /flask path of server to render example.html
