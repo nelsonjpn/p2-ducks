@@ -110,10 +110,24 @@ def char_route():
 
 
 # connects /flask path of server to render rgb.html
-@app.route('/rgb/')
+@app.route('/rgb/', methods=["GET","POST"])
 def rgb_route():
-    # update the count for rgb\
-    return render_template("rgb.html", projects=data.setup())
+    red = 255
+    green = 255
+    blue = 255
+    # first, get the form data
+    if request.form.get("codeRed") is not None:
+        print("Red: " + request.form.get("codeRed"))
+        red = request.form.get("codeRed")
+    if request.form.get("codeGreen") is not None:
+        print("Green: " + request.form.get("codeGreen"))
+        green = request.form.get("codeGreen")
+    if request.form.get("codeBlue") is not None:
+        print("Blue: " + request.form.get("codeBlue"))
+        blue = request.form.get("codeBlue")
+    # update the count for rgb
+    update_stats('rgb')
+    return render_template("rgb.html", red=red, green=green, blue=blue, projects=data.setup())
 
 
 # connects /flask path of server to render gif.html

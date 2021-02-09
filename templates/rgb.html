@@ -4,6 +4,14 @@
     <title>
         RedGreenBlu
     </title>
+    <style>
+        div {
+            background-color: rgb({{ red }}, {{ green }}, {{ blue }});
+            color: rgb(255, 255, 255);
+            padding: 20px;
+        }
+    </style>
+</head>
 <body>
 <form action="/rgb/" method="POST">
     <table border="1">
@@ -15,9 +23,9 @@
             <th></th>
         </tr>
         <tr>
-            <td><Input type="Text" id="codeRed" size="4" maxlength="3" value="0"></td>
-            <td><Input type="Text" id="codeGreen" size="4" maxlength="3" value="191"></td>
-            <td><Input type="Text" id="codeBlue" size="4" maxlength="3" value="255"></td>
+            <td><Input type="Text" name="codeRed" size="4" maxlength="3" value={{ red }}></td>
+            <td><Input type="Text" name="codeGreen" size="4" maxlength="3" value={{ green }}></td>
+            <td><Input type="Text" name="codeBlue" size="4" maxlength="3" value={{ blue }}></td>
             <td><div class="colorDiv">Color</div></td>
             <td><input type="submit"></td>
         </tr>
