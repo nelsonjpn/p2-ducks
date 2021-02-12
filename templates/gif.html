@@ -14,13 +14,14 @@
 <head>
     <meta charset="utf-8">
     <style>
+    }
       .hidden{
         display: none;
       }
     </style>
 </head>
 <body>
-<div><button id="summonPokemon">Load pokeball animation!!</button></div>
+<div><button id="summonPokemon">Load Pokeball animation!!</button></div>
     <img src="http://static.tumblr.com/46cb5b1d63cf84148220815beac16919/sqjwi15/uQCn06vx6/tumblr_static_tumblr_mmff7iuxxv1qhd8sao1_500.gif" class="hidden" id="pokemon">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -36,6 +37,25 @@
         $("#pokemon").fadeIn().center();
         setTimeout(function(){
           $("#pokemon").fadeOut()
+        }, 1000);
+      });
+    </script>
+<div><button id="summonPikachu">Load Pikachu animation!!</button></div>
+    <img src="https://i.pinimg.com/originals/ab/ee/0f/abee0fc1e685e6ecad60cd507a9cf6b5.gif" class="hidden" id="pikachu">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      $.fn.center = function () {
+        this.css("position","absolute");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+        return this;
+      }
+
+      $("#summonPikachu").on("click", function(){
+        $("#Pikachu").fadeIn().center();
+        setTimeout(function(){
+          $("#pikachu").fadeOut()
         }, 1000);
       });
     </script>
