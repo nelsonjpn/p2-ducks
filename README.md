@@ -6,6 +6,22 @@ The P2-Ducks project plans to develop a web application to mimic the information
 
 [AP Test/Requirements](https://apcentral.collegeboard.org/pdf/ap-computer-science-principles-course-and-exam-description.pdf?course=ap-computer-science-principles)
 
+# How to Clone and Run on IDE
+- Copy our repository link (https://github.com/nelsonjpn/p2-ducks)
+- Git -> Clone... -> Paste our url in the box given (hit the clone button highlighted in blue)
+- For first time run make sure you click the green little arrow pointing to line 128 of the main.py
+
+# Sections
+
+## Binary
+
+## Character Codes
+
+## RGB
+
+## GIFS
+
+# College Board Requirements
 | Unit | Percentage | Project Usage |
 | ------------- | ----------- | ----------- |
 |  Big Idea 1: Creative Computing | 10-13% | Big Idea 1|
