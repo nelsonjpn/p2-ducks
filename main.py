@@ -60,11 +60,16 @@ def ducks_route():
 # connects /flask path of server to render binary.html
 @app.route('/bin/', methods=["GET", "POST"])
 def bin_route():
+    dec = 0
     print("n bin")
-    print(request.form.get("binary"))
-    if request.form.get("binary") is not None and request.form.get("binary") != "":
-        print(request.form.get("binary"))
-    return render_template("lightbulb.html", projects=data.setup())
+    print(request.form.get("bin"))
+    if request.form.get("bin") is not None and request.form.get("bin") != "":
+        print(request.form.get("bin"))
+        bin=request.form.get("bin")
+        print('binary; ' + bin)
+        dec=int(bin, 2)
+        print(dec)
+    return render_template("lightbulb.html", decimal=dec, projects=data.setup())
 
 
 # connects /flask path of server to render example.html
