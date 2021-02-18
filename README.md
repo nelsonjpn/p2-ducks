@@ -24,8 +24,8 @@ The P2-Ducks project plans to develop a web application to mimic the information
 # College Board Requirements
 | Unit | Percentage | Project Usage |
 | ------------- | ----------- | ----------- |
-|  Big Idea 1: Creative Computing | 10-13% | Big Idea 1|
-|  Big Idea 2: Data | 17-22% |Big Idea 2|
-|  Big Idea 3: Algorithms and Programming | 30-35% |Big Idea 3|
-|  Big Idea 4: Computer Systems and Network | 11-15% | Big Idea 4|
-|  Big Idea 5: Impact of Computing | 21-26% |  Big Idea 5|
+|  Big Idea 1: Creative Computing | 10-13% |Working together collaboratively as a team of 6 in a virtual enviornment. We mainly use Slack and Zoom to efficently establish a form of communication. Additioanlly, we use the scrum board to keep track of our ticketed items.|
+|  Big Idea 2: Data | 17-22% |Using databases to track and define user interaction with our website and logging their actions (Work in progress)|
+|  Big Idea 3: Algorithms and Programming | 30-35% |We used Mr.M's website template to create our navigatable website. In doing so, we mainly used HTML pages for them to navigate our website|
+|  Big Idea 4: Computer Systems and Network | 11-15% |Using HTTP protocol to access the website and GET to access data|
+|  Big Idea 5: Impact of Computing | 21-26% |Deploying our website through aws (Work in progress)|
