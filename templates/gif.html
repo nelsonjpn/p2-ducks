@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>GIFs</title>
 </head>
-<body>
+<body style = "background: url(https://wallpapercave.com/wp/wp2757874.gif)">
 <h1>GIFs <a href="/easteregg/"><img src="../static/easter_egg.png" width="15" height="20" target=new"></a></h1>
 </body>
 </html>
@@ -53,9 +53,28 @@
       }
 
       $("#summonPikachu").on("click", function(){
-        $("#Pikachu").fadeIn().center();
+        $("#pikachu").fadeIn().center();
         setTimeout(function(){
           $("#pikachu").fadeOut()
+        }, 1000);
+      });
+    </script>
+<div><button id="summonAsh">Load Ash animation!!</button></div>
+<img src="https://media.tenor.com/images/54733ccea7a284f87c29d1c78ab8f19f/tenor.gif" class="hidden" id="ash">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+      $.fn.center = function () {
+        this.css("position","absolute");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+        return this;
+      }
+
+      $("#summonAsh").on("click", function(){
+        $("#ash").fadeIn().center();
+        setTimeout(function(){
+          $("#ash").fadeOut()
         }, 1000);
       });
     </script>

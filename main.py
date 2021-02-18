@@ -4,9 +4,8 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import Markup
-# from model import site_stats
-# from model import db
 import datetime
+#from model import updatestats
 # from flask_wtf import FlaskForm
 # from wtforms import stringfield
 
@@ -16,14 +15,25 @@ import data  # projects definitions are placed in different file
 # from wtforms.validators import InputRequired, email, length
 
 app = Flask(__name__)
-
-""" database locations """
 dbURI = 'sqlite:///model/createDB'
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = dbURI
-
+Bootstrap(app)
 db = SQLAlchemy(app)
+
+# class LoginForm(FlaskForm):
+
+
+class Users(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.String(255), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+
+# create a Flask instance
+# app = Flask(__name__)
 
 
 # connects default URL of server to render home.html
@@ -32,18 +42,34 @@ def home_route():
     return render_template("p2-ducks.html", projects=data.setup())
 
 
+# connects /hello path of server to render hello.html
+@app.route('/PaulN/')
+def hello_route():
+    print('In PaulN')
+    user = Users.query.filter_by(UserID=1).first()
+    print(user.username)
+    return render_template("PaulN.html", projects=data.setup())
+
+
 # connects /hello path of server to render p2-ducks.html
 @app.route('/ducks/')
 def ducks_route():
     return render_template("p2-ducks.html", projects=data.setup())
 
 
-# connects /flask path of server to render lightbulb.html
+# connects /flask path of server to render binary.html
 @app.route('/bin/', methods=["GET", "POST"])
 def bin_route():
-    # first get the form data
-
-    return render_template("lightbulb.html", projects=data.setup())
+    dec = 0
+    print("n bin")
+    print(request.form.get("bin"))
+    if request.form.get("bin") is not None and request.form.get("bin") != "":
+        print(request.form.get("bin"))
+        bin=request.form.get("bin")
+        print('binary; ' + bin)
+        dec=int(bin, 2)
+        print(dec)
+    return render_template("lightbulb.html", decimal=dec, projects=data.setup())
 
 
 # connects /flask path of server to render example.html
@@ -58,8 +84,7 @@ def example_route():
     else:
         strTxt = ""
         example = strTxt
-    # log visit
-    update_stats('example')
+    # next format it
     # then return the parameter to the page
     return render_template("example.html", strTxt=strTxt, example=example, projects=data.setup())
 
@@ -81,11 +106,12 @@ def update_stats(site):
         dt = datetime.datetime.now()
         v1 = SiteStats(sitename=site, datevisit=str(dt))
         print("Variable: " + v1.sitename + " " + v1.datevisit)
+        print("database:" + app.config['SQLALCHEMY_DATABASE_URI'])
         db.session.add(v1)
         db.session.commit()
-
     finally:
         print("Done")
+
 
 
 # connects /flask path of server to render Char_codes.html
@@ -103,31 +129,25 @@ def char_route():
         strUnicode = Markup("&#" + request.form.get("UnicodeCode") + ";")
     else:
         strUnicode = ""
-
-    update_stats('char')
     # return the page, sending ASCII and Unicode parameters
     return render_template("char_codes.html", asciicode=strAscii, unicode=strUnicode, projects=data.setup())
 
 
 # connects /flask path of server to render rgb.html
-@app.route('/rgb/', methods=["GET","POST"])
+@app.route('/rgb/', methods=["GET", "POST"])
 def rgb_route():
-    red = 255
-    green = 255
-    blue = 255
-    # first, get the form data
+    codeRed=255
+    codeGreen=255
+    codeBlue=255
     if request.form.get("codeRed") is not None:
-        print("Red: " + request.form.get("codeRed"))
-        red = request.form.get("codeRed")
+        codeRed=request.form.get("codeRed")
     if request.form.get("codeGreen") is not None:
-        print("Green: " + request.form.get("codeGreen"))
-        green = request.form.get("codeGreen")
+        codeGreen=request.form.get("codeGreen")
     if request.form.get("codeBlue") is not None:
-        print("Blue: " + request.form.get("codeBlue"))
-        blue = request.form.get("codeBlue")
+        codeBlue=request.form.get("codeBlue")
     # update the count for rgb
-    update_stats('rgb')
-    return render_template("rgb.html", red=red, green=green, blue=blue, projects=data.setup())
+    update_stats("rgb")
+    return render_template("rgb.html", red=codeRed, green=codeGreen, blue=codeBlue, projects=data.setup())
 
 
 # connects /flask path of server to render gif.html
