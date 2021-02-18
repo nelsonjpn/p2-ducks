@@ -59,5 +59,24 @@
         }, 1000);
       });
     </script>
+<div><button id="summonAsh">Load Ash animation!!</button></div>
+<img src="https://media.tenor.com/images/54733ccea7a284f87c29d1c78ab8f19f/tenor.gif" class="hidden" id="ash">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+      $.fn.center = function () {
+        this.css("position","absolute");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+        return this;
+      }
+
+      $("#summonAsh").on("click", function(){
+        $("#ash").fadeIn().center();
+        setTimeout(function(){
+          $("#ash").fadeOut()
+        }, 1000);
+      });
+    </script>
 </body>
 </html>
