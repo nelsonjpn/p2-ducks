@@ -151,11 +151,10 @@ def rgb_route():
 
 
 # connects /flask path of server to render gif.html
-@app.route('/gif/')
+@app.route('/gif/'), methods=["GET", "POST"])
 def gif_route():
     # update the count for gif
     return render_template("gif.html", projects=data.setup())
-
 
 @app.route("/project/runtime")
 def runtime_route():
