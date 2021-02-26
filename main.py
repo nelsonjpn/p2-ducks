@@ -162,7 +162,7 @@ def gif_route():
         pika=request.form.get("pika")
     if request.form.get("squirt") is not None:
         squirt=request.form.get("squirt")
-    update_stats("gif")
+    update_stats("giftype")
     return render_template("gif.html", ch=charm, pi=pika, sq=squirt, bu=bulb, projects=data.setup())
 
 @app.route("/project/runtime")
