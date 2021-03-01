@@ -20,6 +20,12 @@ The P2-Ducks project plans to develop a web application to mimic the information
 ## RGB
 
 ## GIFS
+- The GIFs page showcases various GIFs of different kinds of Pokemon.
+- It shows usage of website styling, HTML, Javascript, and Python.
+- Buttons on the page load GIFs using Javascript
+- A select tag/dropdown menu is shown at the top of the page to load more GIFs by taking user input,
+running it through the main.py file, and going back to the GIFs page to display the desired GIF.
+- Worked on mainly by Brent Arcinue and Cody Peng from P2Ducks.
 
 # College Board Requirements
 | Unit | Percentage | Project Usage |
