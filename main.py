@@ -151,11 +151,19 @@ def rgb_route():
 
 
 # connects /flask path of server to render gif.html
-@app.route('/gif/')
+@app.route('/gif/'), methods=["GET", "POST"])
 def gif_route():
-    # update the count for gif
-    return render_template("gif.html", projects=data.setup())
-
+    giftype="charm"
+    if request.form.get("charm") is not None:
+        charm=request.form.get("charm")
+    if request.form.get("bulb") is not None:
+        bulb=request.form.get("bulb")
+    if request.form.get("pika") is not None:
+        pika=request.form.get("pika")
+    if request.form.get("squirt") is not None:
+        squirt=request.form.get("squirt")
+    update_stats("giftype")
+    return render_template("gif.html", ch=charm, pi=pika, sq=squirt, bu=bulb, projects=data.setup())
 
 @app.route("/project/runtime")
 def runtime_route():
