@@ -151,7 +151,7 @@ def rgb_route():
 
 
 # connects /flask path of server to render gif.html
-@app.route('/gif/'), methods=["GET", "POST"])
+@app.route('/gif/', methods=["GET", "POST"])
 def gif_route():
     giftype="charm"
     if request.form.get("charm") is not None:
