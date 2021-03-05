@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
+{% extends "base.html" %}
+
+{% block head %}
     <style>
         * {
             box-sizing: border-box;
@@ -25,8 +27,8 @@
             background-color: #92a8d1;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+{% block body2 %}
 
 <h2>Lightbulb <a href="/easteregg/"  target="new"><img src="../static/easter_egg.png" width="15" height="20"></a></h2>
 <p>This is the template for the project which shows the lightbulb demonstration in the Harvard Video:</p>
@@ -108,5 +110,5 @@
                     }
                 }
             </script>
-</body>
+{% endblock %}
 </html>

@@ -35,29 +35,69 @@
              background-repeat: no-repeat;
              background-attachment: fixed;
              background-size: 100% 100%;
+
+}
+p{
+  font-family: arial, sans-serif;
+  color: white;
 }
     </style>
 </head>
 <body>
 <h1>RGB</h1>
-<form action="/rgb/" method="POST">
+<form id="rgbForm" action="/rgb/" method="POST">
     <table border="1">
         <tr>
             <th style="background-color:red">Red</th>
             <th style="background-color:green">Green</th>
             <th style="background-color:blue">Blue</th>
-            <th>Result</th>
+            <th style="background-color:white">Result</th>
             <th></th>
         </tr>
         <tr>
-            <td><Input type="Text" name="codeRed" size="4" maxlength="3" value={{ red }}></td>
-            <td><Input type="Text" name="codeGreen" size="4" maxlength="3" value={{ green }}></td>
-            <td><Input type="Text" name="codeBlue" size="4" maxlength="3" value={{ blue }}></td>
+            <td><Input type="Text" id="red" name="codeRed" size="4" maxlength="3" value={{ red }}></td>
+            <td><Input type="Text" id="green" name="codeGreen" size="4" maxlength="3" value={{ green }}></td>
+            <td><Input type="Text" id="blue" name="codeBlue" size="4" maxlength="3" value={{ blue }}></td>
             <td><div class="colorDiv">Color</div></td>
-            <td><input type="submit"></td>
+            <td><input onclick="myFunction()" type="button" value="submit"></td>
         </tr>
     </table>
+    <p id="msg"></p>
 </form>
+<script>
+function myFunction() {
+  var x, text;
+  var y, z;
+  var redBool, greenBool, blueBool;
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("red").value;
+  y = document.getElementById("green").value;
+  z = document.getElementById("blue").value;
+  //set boolean variables
+  redBool = isValid(x);
+  greenBool = isValid(y);
+  blueBool = isValid(z);
+  if ((redBool == true) && (greenBool == true) && (blueBool == true)){
+    document.getElementById("rgbForm").submit();
+  } else{
+    document.getElementById("msg").innerHTML="Value must be between 0 and 255";
+  }
+ }
+
+ function isValid(input){
+  // If input is Not a Number or less than 0 or greater than 255
+  if (isNaN(input) || input < 0 || input > 255) {
+ //alert("inif");
+    text = "Input not valid";
+    return(false);
+  } else {
+  //alert("inelse");
+    text = "Input OK";
+    return(true);
+    //alert(text);
+  }
+}
+</script>
 </body>
 </head>
 </html>
