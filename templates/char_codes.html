@@ -1,27 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Unicode ASCII </title>
-    <link rel="stylesheet" href="style.css">
+<html>
+{% extends "base.html" %}
+
+{% block head %}
     <style>
-        h1 {
-            color: pink;
-            }
+        body {
+          background-image: url('../static/cloud_background.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: 100% 100%;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        h3{
+            font-family: arial, sans-serif;
+            color: white;
+        }
+        h1{
+            font-family: arial, sans-serif;
+            color: white;
+        }
     </style>
-</head>
-<body>
-<h1>Character codes <a href="/easteregg/"><img src="../static/easter_egg.png" width="15" height="20" target=new"></a></h1>
-<h3>ASCII is a character encoding standard for electronic communication. ASCII codes represent text in computers, telecommunications equipment, and other devices.</h3>
+{% endblock %}
+{% block body2 %}
+<h1>Character codes <a href="/easteregg/"><img src="../static/easter_egg.png" width="15" height="20" target="new"></a></h1>
+<h3 color="white">ASCII is a character encoding standard for electronic communication. ASCII codes represent text in computers, telecommunications equipment, and other devices.</h3>
 <h3>Unicode is an information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems. </h3>
 <h3>Have a try!</h3>
 <link rel="stylesheet" href="style.css">
-<style>
-        h3 {
-            color: light green;
-            }
-    </style>
-<form action="/char/" method="POST">
+<form action="/char/" id="charForm" method="POST">
     <table border="1">
         <tr>
             <th>Code type</th>
@@ -31,14 +52,31 @@
         </tr>
         <tr>
             <td>ASCII</td>
-            <td><Input type="Text" name="ASCIICode" size="4" align="center" class="ASCIIDiv"></td>
+            <td><Input type="Text" id="ASCIICode" name="ASCIICode" size="4" align="center" class="ASCIIDiv" value={{ asciicode }}></td>
             <td><p align="center" class="asciiDiv">{{ asciicode }}</p ></td>
-            <td>Unicode</td><td><input type="Text" name="UnicodeCode" size="4"></td>
+            <td>Unicode</td><td><input type="Text" name="UnicodeCode" size="4" value={{ unicode }}></td>
             <td><p align="center" class="unicodeDiv">{{ unicode }}</p ></td>
-            <td><input type="submit"></td>
+            <td><input type="button" value="Submit" onclick="myFunction()"></td>
         </tr>
     </table>
+    <h3 id="demo"></h3>
 </form>
-</div>
-</body>
+<script>
+function myFunction() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("ASCIICode").value;
+  //alert("In myFunction");
+  // If x is Not a Number or less than one or greater than 128
+  if (isNaN(x) || x < 1 || x > 128) {
+    text = "Must be a Number from 1 to 128";
+  } else {
+    text = "";
+    document.getElementById("charForm").submit();
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+{% endblock %}
 </html>
