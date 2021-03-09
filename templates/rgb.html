@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
+{% extends "base.html" %}
+{% block head %}
     <title>
         RedGreenBlu
     </title>
@@ -42,8 +43,8 @@ p{
   color: white;
 }
     </style>
-</head>
-<body>
+{% endblock %}
+{% block body2 %}
 <h1>RGB</h1>
 <form id="rgbForm" action="/rgb/" method="POST">
     <table border="1">
@@ -98,6 +99,5 @@ function myFunction() {
   }
 }
 </script>
-</body>
-</head>
+{% endblock %}
 </html>
