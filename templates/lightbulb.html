@@ -4,28 +4,34 @@
 
 {% block head %}
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        .column {
-            float: left;
-            width: 33.33%;
-            padding: 5px;
-        }
-
-        /* Clearfix (clear floats) */
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-    </style>
-    <style>
         body  {
             background-image: url("https://www.boredart.com/wp-content/uploads/2017/02/unmellow-yellow.jpg");
             background-color: #92a8d1;
         }
+                table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin-left: 5;
+            margin-right: 5;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        h1{
+          font-family: arial, sans-serif;
+          color: white;
+          }
+p{
+  font-family: arial, sans-serif;
+  color: white;
+}
     </style>
 {% endblock %}
 {% block body2 %}
@@ -45,9 +51,8 @@
             }
         </script>
 
-
         <form action="/bin/" method="post">
-            <table border="1">
+            <table border="1" width="90%" align="center">
                 <tr>
                     <td><img id="bulb1" src="../static/pic_bulboff1.gif" width="100" height="180">
                         <button type="button" onclick="changeImage('1')">On/Off</button>
@@ -79,8 +84,8 @@
                     <td><input type="button" value="Get Binary" onclick="getbin()"></td>
                     <td><input type="submit" value="Get decimal"></td>
                     <td><input type="text" id="decimal" value={{ decimal }} size="10"></td></tr>
-
             </table>
+        </form>
             <script>
                 function getbin(){
                     //alert("get binary");
