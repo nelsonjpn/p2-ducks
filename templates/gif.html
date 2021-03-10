@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+{% extends "base.html" %}
+
+{% block head %}
     <meta charset="UTF-8">
     <title>GIFs</title>
+{% endblock %}
+{% block body2 %}
 </head>
 <body style = "background: url(https://wallpapercave.com/wp/wp2757874.gif)">
 <h1>GIFs <a href="/easteregg/"><img src="../static/easter_egg.png" width="15" height="20" target=new"></a></h1>
-
-</body>
+<form action="/gif/" method="post">
+    <select name="selGif" id="selGif">
+        <option value="../static/blinking.gif">Blinking</option>
+        <option value="../static/chopping.gif">Food</option>
+        <option value="../static/eating.gif">Food2</option>
+        <option value="http://i.stack.imgur.com/SBv4T.gif">Secret</option>
+    </select>
+    <input type="submit">
+</form>
+<img src={{ gif }} alt="gif from python" width="250"/>
+}
 </html>
 <img src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width=250/>
 <!DOCTYPE html>
@@ -21,63 +34,5 @@
       }
     </style>
 </head>
-<body>
-<div><button id="summonPokemon">Load Pokeball animation!!</button></div>
-    <img src="http://static.tumblr.com/46cb5b1d63cf84148220815beac16919/sqjwi15/uQCn06vx6/tumblr_static_tumblr_mmff7iuxxv1qhd8sao1_500.gif" class="hidden" id="pokemon">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-      $.fn.center = function () {
-        this.css("position","absolute");
-        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-        return this;
-      }
-
-      $("#summonPokemon").on("click", function(){
-        $("#pokemon").fadeIn().center();
-        setTimeout(function(){
-          $("#pokemon").fadeOut()
-        }, 1000);
-      });
-    </script>
-<div><button id="summonPikachu">Load Pikachu animation!!</button></div>
-    <img src="https://i.pinimg.com/originals/ab/ee/0f/abee0fc1e685e6ecad60cd507a9cf6b5.gif" class="hidden" id="pikachu">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-      $.fn.center = function () {
-        this.css("position","absolute");
-        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-        return this;
-      }
-
-      $("#summonPikachu").on("click", function(){
-        $("#pikachu").fadeIn().center();
-        setTimeout(function(){
-          $("#pikachu").fadeOut()
-        }, 1000);
-      });
-    </script>
-<div><button id="summonAsh">Load Ash animation!!</button></div>
-<img src="https://media.tenor.com/images/54733ccea7a284f87c29d1c78ab8f19f/tenor.gif" class="hidden" id="ash">
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-      $.fn.center = function () {
-        this.css("position","absolute");
-        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-        return this;
-      }
-
-      $("#summonAsh").on("click", function(){
-        $("#ash").fadeIn().center();
-        setTimeout(function(){
-          $("#ash").fadeOut()
-        }, 1000);
-      });
-    </script>
-</body>
+{% endblock %}
 </html>
