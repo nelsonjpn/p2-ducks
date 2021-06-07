@@ -72,6 +72,21 @@ def bin_route():
     return render_template("lightbulb.html", decimal=dec, projects=data.setup())
 
 
+# connects /flask path of server to render binary.html
+@app.route('/bi/', methods=["GET", "POST"])
+def bi_route():
+    dec = 0
+    print("n bi")
+    print(request.form.get("bi"))
+    if request.form.get("bi") is not None and request.form.get("bi") != "":
+        print(request.form.get("bi"))
+        bin=request.form.get("bi")
+        print('binary; ' + bi)
+        dec=int(bi, 2)
+        print(dec)
+    return render_template("jaideepminilab.html", decimal=dec, projects=data.setup())
+
+
 # connects /flask path of server to render example.html
 @app.route('/example/', methods=["GET", "POST"])
 def example_route():
